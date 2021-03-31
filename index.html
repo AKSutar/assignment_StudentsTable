@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Add, Edit & Delete a row using HTML/CSS and JavaScript.
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault(); validate(); onFormSubmit(); " autocomplete="off" action="#" id="myForm">
+                    <div>
+                        <label>Full Name</label>
+                        <input type="text" name="fname" id="fname">
+                        <span id="nameError"></span>
+                    </div>
+                    <div>
+                        <label>Degree</label>
+                        <input type="text" name="degree" id="degree">
+                        <span id="degreeError"></span>
+                    </div>
+                    <div>
+                        <label>Sub-degree</label>
+                        <input type="text" name="subDegree" id="subDegree">
+                        <span id="subdegreeError"></span>
+                    </div>
+                    <div>
+                        <label>Date of Birth</label>
+                        <input type="text" name="dob" id="dob">
+                        <span id="dobError"></span>
+                    </div>
+                    <div>
+                        <label>Email-Id</label>
+                        <input type="text" name="email" id="email">
+                        <span id="emailError"></span>
+                    </div>
+                    <div>
+                        <label>Mobile No</label>
+                        <input type="number" name="phone" id="phone">
+                        <span id="phoneError"></span>
+                    </div>
+                    <div>
+                        <label>Student Id</label>
+                        <input type="number" name="student" id="student">
+                        <span id="idError"></span>
+                    </div>
+
+                    <div class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <td>
+    <table class="list" id="employeeList">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Degree</th>
+                <th>Sub-Degree</th>
+                <th>Date of Birth</th>
+                <th>Email-Id</th>
+                <th>Mobile No</th>
+                <th>Student ID</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+    </td>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
