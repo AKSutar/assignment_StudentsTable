@@ -1,5 +1,5 @@
 var selectedRow = null;
-
+ let count = 0;
 function validate() {
     var fullName = document.getElementById("fname");
     var degreeGrd = document.getElementById("degree");
@@ -10,29 +10,27 @@ function validate() {
     var studentId = document.getElementById("student");
 
     // ReGex Check
-    var nameCheck = /^[A-Za-z ]+$/;
-    var degreeCheck = /^[A-Za-z ]+$/;
-    var subdegreeCheck = /^[A-Za-z ]+$/;
-    var dobCheck = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    var regExp = /^[A-Za-z ]+$/;
+    var dobCheck = /^[0-9]+\-[0-9]+\-[0-9]+$/;
     var mailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    var phoneCheck = / ^[0-9]{0,10}$/;
-    var stuIdCheck = / ^\d{10}$ /;
+    var phoneCheck = / ^[0-9]{10}$/;
+    
 
-    if (nameCheck.test(fullName.value)) {
+    if (regExp.test(fullName.value)) {
         document.getElementById("nameError").innerHTML = " ";
     } else {
         document.getElementById("nameError").innerHTML = " ** Username is Invalid ";
         return false;
     }
 
-    if (degreeCheck.test(degreeGrd.value)) {
+    if (regExp.test(degreeGrd.value)) {
         document.getElementById("degreeError").innerHTML = " ";
     } else {
         document.getElementById("degreeError").innerHTML = " ** Degree is Invalid ";
         return false;
     }
 
-    if (subdegreeCheck.test(subDegreeGrd.value)) {
+    if (regExp.test(subDegreeGrd.value)) {
         document.getElementById("subdegreeError").innerHTML = " ";
     } else {
         document.getElementById("subdegreeError").innerHTML =
@@ -62,20 +60,21 @@ function validate() {
         return false;
     }
 
-    if (stuIdCheck.test(studentId.value)) {
-        document.getElementById("idError").innerHTML = " ";
-    } else {
-        document.getElementById("idError").innerHTML = " ** Student Id is Invalid ";
-        return false;
-    }
+  
 }
 
 
 function onFormSubmit() {
     if (readFormData()) {
         var formData = readFormData();
-        if (selectedRow == null) insertNewRecord(formData);
-        else updateRecord(formData);
+        if (selectedRow == null) 
+        {
+            insertNewRecord(formData);
+        }
+        else
+        {
+            updateRecord(formData);
+        } 
         resetForm();
     }
 }
@@ -93,10 +92,14 @@ function readFormData() {
     return formData;
 }
 
+function rand() {
+    return count = count + 1;
+}
+
 function insertNewRecord(data) {
     var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
-
+    
     cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.fname;
 
@@ -116,7 +119,7 @@ function insertNewRecord(data) {
     cell6.innerHTML = data.phone;
 
     cell7 = newRow.insertCell(6);
-    cell7.innerHTML = data.student;
+    cell7.innerHTML = rand();
 
     cell8 = newRow.insertCell(7);
     cell8.innerHTML = `<a onClick="onEdit(this)">Edit</a>
