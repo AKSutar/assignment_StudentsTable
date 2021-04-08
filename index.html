@@ -12,7 +12,7 @@
     <table>
         <tr>
             <td>
-                <form onsubmit="event.preventDefault(); validate(); onFormSubmit(); " autocomplete="off" action="#" id="myForm">
+                <form onsubmit="event.preventDefault(); validate(); onFormSubmit();" autocomplete="off" id="myForm">
                     <div>
                         <label>Full Name</label>
                         <input type="text" name="fname" id="fname">
@@ -43,15 +43,11 @@
                         <input type="number" name="phone" id="phone">
                         <span id="phoneError"></span>
                     </div>
-                    <div>
-                        <label>Student Id</label>
-                        <input type="number" name="student" id="student">
-                        <span id="idError"></span>
-                    </div>
 
                     <div class="form-action-buttons">
-                        <input type="submit" value="Submit">
+                        <button type="submit" value="Submit" class="btn1" id="btn" onclick="storeData(); viewData();">Submit</button>
                     </div>
+
                 </form>
             </td>
         </tr>
@@ -59,10 +55,10 @@
     <br>
 
     <td>
-    <table class="list" id="employeeList">
+    <table class="list pagination" data-pagecount="2" id="employeeList">
         <thead>
             <tr>
-                <th>Full Name</th>
+                <th>Full Name &#9650</th> <!-- Click on the 'First Name' to get things sorted -->
                 <th>Degree</th>
                 <th>Sub-Degree</th>
                 <th>Date of Birth</th>
@@ -77,6 +73,8 @@
         </tbody>
     </table>
     </td>
+
+    <!-- <div id="pagination"></div> -->
 
     <script src="script.js"></script>
 </body>
